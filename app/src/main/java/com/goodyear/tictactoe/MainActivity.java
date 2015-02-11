@@ -181,77 +181,92 @@ public class MainActivity extends Activity {
             } else {
                 int number = 0;
                 boolean hasNumber = false;
-                if(buttons[0].getText().equals("X") && buttons[1].getText().equals("X") && !buttons[2].getText().equals("O")) {
+                // zuerst gucken, ob man gewinnen kann
+                if((buttons[0].getText().equals("O") && buttons[1].getText().equals("O") && !buttons[2].getText().equals("X")) ||
+                        (buttons[5].getText().equals("O") && buttons[8].getText().equals("O") && !buttons[2].getText().equals("X")) ||
+                        (buttons[4].getText().equals("O") && buttons[6].getText().equals("O") && !buttons[2].getText().equals("X"))) {
                     number = 2;
                     hasNumber = true;
-                } else if(buttons[0].getText().equals("X") && buttons[2].getText().equals("X") && !buttons[1].getText().equals("O")) {
+                } else if(buttons[0].getText().equals("O") && buttons[2].getText().equals("O") && !buttons[1].getText().equals("X") ||
+                        (buttons[4].getText().equals("O") && buttons[7].getText().equals("O") && !buttons[1].getText().equals("X"))) {
                     number = 1;
                     hasNumber = true;
-                } else if(buttons[1].getText().equals("X") && buttons[2].getText().equals("X") && !buttons[0].getText().equals("O")) {
+                } else if((buttons[1].getText().equals("O") && buttons[2].getText().equals("O") && !buttons[0].getText().equals("X")) ||
+                        (buttons[4].getText().equals("O") && buttons[8].getText().equals("O") && !buttons[0].getText().equals("X")) ||
+                        (buttons[3].getText().equals("O") && buttons[6].getText().equals("O") && !buttons[0].getText().equals("X"))) {
                     number = 0;
                     hasNumber = true;
-                } else if(buttons[3].getText().equals("X") && buttons[4].getText().equals("X") && !buttons[5].getText().equals("O")) {
+                } else if((buttons[3].getText().equals("O") && buttons[4].getText().equals("O") && !buttons[5].getText().equals("X")) ||
+                        (buttons[2].getText().equals("O") && buttons[8].getText().equals("O") && !buttons[5].getText().equals("X"))) {
                     number = 5;
                     hasNumber = true;
-                } else if(buttons[3].getText().equals("X") && buttons[5].getText().equals("X") && !buttons[4].getText().equals("O")) {
+                } else if((buttons[3].getText().equals("O") && buttons[5].getText().equals("O") && !buttons[4].getText().equals("X")) ||
+                        (buttons[1].getText().equals("O") && buttons[7].getText().equals("O") && !buttons[4].getText().equals("X")) ||
+                        (buttons[0].getText().equals("O") && buttons[8].getText().equals("O") && !buttons[4].getText().equals("X")) ||
+                        (buttons[2].getText().equals("O") && buttons[6].getText().equals("O") && !buttons[4].getText().equals("X"))) {
                     number = 4;
                     hasNumber = true;
-                } else if(buttons[4].getText().equals("X") && buttons[5].getText().equals("X") && !buttons[3].getText().equals("O")) {
+                } else if((buttons[4].getText().equals("O") && buttons[5].getText().equals("O") && !buttons[3].getText().equals("X")) ||
+                        (buttons[0].getText().equals("O") && buttons[6].getText().equals("O") && !buttons[3].getText().equals("X"))) {
                     number = 3;
                     hasNumber = true;
-                } else if(buttons[6].getText().equals("X") && buttons[7].getText().equals("X") && !buttons[8].getText().equals("O")) {
+                } else if((buttons[6].getText().equals("O") && buttons[7].getText().equals("O") && !buttons[8].getText().equals("X")) ||
+                        (buttons[2].getText().equals("O") && buttons[5].getText().equals("O") && !buttons[8].getText().equals("X")) ||
+                        (buttons[0].getText().equals("O") && buttons[4].getText().equals("O") && !buttons[8].getText().equals("X"))) {
                     number = 8;
                     hasNumber = true;
-                } else if(buttons[6].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[7].getText().equals("O")) {
+                } else if((buttons[6].getText().equals("O") && buttons[8].getText().equals("O") && !buttons[7].getText().equals("X")) ||
+                        (buttons[1].getText().equals("O") && buttons[4].getText().equals("O") && !buttons[7].getText().equals("X"))) {
                     number = 7;
                     hasNumber = true;
-                } else if(buttons[7].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[6].getText().equals("O")) {
+                }  else if((buttons[7].getText().equals("O") && buttons[8].getText().equals("O") && !buttons[6].getText().equals("X")) ||
+                        (buttons[0].getText().equals("O") && buttons[3].getText().equals("O") && !buttons[6].getText().equals("X")) ||
+                        (buttons[2].getText().equals("O") && buttons[4].getText().equals("O") && !buttons[6].getText().equals("X"))) {
                     number = 6;
                     hasNumber = true;
-                } else if(buttons[0].getText().equals("X") && buttons[3].getText().equals("X") && !buttons[6].getText().equals("O")) {
-                    number = 6;
+                } else
+                // Gegner stoppen
+                if((buttons[0].getText().equals("X") && buttons[1].getText().equals("X") && !buttons[2].getText().equals("O")) ||
+                        (buttons[5].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[2].getText().equals("O")) ||
+                        (buttons[4].getText().equals("X") && buttons[6].getText().equals("X") && !buttons[2].getText().equals("O"))) {
+                    number = 2;
                     hasNumber = true;
-                } else if(buttons[0].getText().equals("X") && buttons[6].getText().equals("X") && !buttons[3].getText().equals("O")) {
-                    number = 3;
-                    hasNumber = true;
-                } else if(buttons[3].getText().equals("X") && buttons[6].getText().equals("X") && !buttons[0].getText().equals("O")) {
-                    number = 0;
-                    hasNumber = true;
-                } else if(buttons[1].getText().equals("X") && buttons[4].getText().equals("X") && !buttons[7].getText().equals("O")) {
-                    number = 7;
-                    hasNumber = true;
-                } else if(buttons[1].getText().equals("X") && buttons[7].getText().equals("X") && !buttons[4].getText().equals("O")) {
-                    number = 4;
-                    hasNumber = true;
-                } else if(buttons[4].getText().equals("X") && buttons[7].getText().equals("X") && !buttons[1].getText().equals("O")) {
+                } else if(buttons[0].getText().equals("X") && buttons[2].getText().equals("X") && !buttons[1].getText().equals("O") ||
+                        (buttons[4].getText().equals("X") && buttons[7].getText().equals("X") && !buttons[1].getText().equals("O"))) {
                     number = 1;
                     hasNumber = true;
-                } else if(buttons[2].getText().equals("X") && buttons[5].getText().equals("X") && !buttons[8].getText().equals("O")) {
-                    number = 8;
-                    hasNumber = true;
-                } else if(buttons[5].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[2].getText().equals("O")) {
-                    number = 2;
-                    hasNumber = true;
-                } else if(buttons[2].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[5].getText().equals("O")) {
-                    number = 5;
-                    hasNumber = true;
-                } else if(buttons[0].getText().equals("X") && buttons[4].getText().equals("X") && !buttons[8].getText().equals("O")) {
-                    number = 8;
-                    hasNumber = true;
-                } else if(buttons[0].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[4].getText().equals("O")) {
-                    number = 4;
-                    hasNumber = true;
-                } else if(buttons[4].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[0].getText().equals("O")) {
+                } else if((buttons[1].getText().equals("X") && buttons[2].getText().equals("X") && !buttons[0].getText().equals("O")) ||
+                        (buttons[4].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[0].getText().equals("O")) ||
+                        (buttons[3].getText().equals("X") && buttons[6].getText().equals("X") && !buttons[0].getText().equals("O"))) {
                     number = 0;
                     hasNumber = true;
-                } else if(buttons[2].getText().equals("X") && buttons[4].getText().equals("X") && !buttons[6].getText().equals("O")) {
-                    number = 6;
+                } else if((buttons[3].getText().equals("X") && buttons[4].getText().equals("X") && !buttons[5].getText().equals("O")) ||
+                        (buttons[2].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[5].getText().equals("O"))) {
+                    number = 5;
                     hasNumber = true;
-                } else if(buttons[2].getText().equals("X") && buttons[6].getText().equals("X") && !buttons[4].getText().equals("O")) {
+                } else if((buttons[3].getText().equals("X") && buttons[5].getText().equals("X") && !buttons[4].getText().equals("O")) ||
+                        (buttons[1].getText().equals("X") && buttons[7].getText().equals("X") && !buttons[4].getText().equals("O")) ||
+                        (buttons[0].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[4].getText().equals("O")) ||
+                        (buttons[2].getText().equals("X") && buttons[6].getText().equals("X") && !buttons[4].getText().equals("O"))) {
                     number = 4;
                     hasNumber = true;
-                } else if(buttons[4].getText().equals("X") && buttons[6].getText().equals("X") && !buttons[2].getText().equals("O")) {
-                    number = 2;
+                } else if((buttons[4].getText().equals("X") && buttons[5].getText().equals("X") && !buttons[3].getText().equals("O")) ||
+                        (buttons[0].getText().equals("X") && buttons[6].getText().equals("X") && !buttons[3].getText().equals("O"))) {
+                    number = 3;
+                    hasNumber = true;
+                } else if((buttons[6].getText().equals("X") && buttons[7].getText().equals("X") && !buttons[8].getText().equals("O")) ||
+                        (buttons[2].getText().equals("X") && buttons[5].getText().equals("X") && !buttons[8].getText().equals("O")) ||
+                        (buttons[0].getText().equals("X") && buttons[4].getText().equals("X") && !buttons[8].getText().equals("O"))) {
+                    number = 8;
+                    hasNumber = true;
+                } else if((buttons[6].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[7].getText().equals("O")) ||
+                        (buttons[1].getText().equals("X") && buttons[4].getText().equals("X") && !buttons[7].getText().equals("O"))) {
+                    number = 7;
+                    hasNumber = true;
+                }  else if((buttons[7].getText().equals("X") && buttons[8].getText().equals("X") && !buttons[6].getText().equals("O")) ||
+                        (buttons[0].getText().equals("X") && buttons[3].getText().equals("X") && !buttons[6].getText().equals("O")) ||
+                        (buttons[2].getText().equals("X") && buttons[4].getText().equals("X") && !buttons[6].getText().equals("O"))) {
+                    number = 6;
                     hasNumber = true;
                 }
 
